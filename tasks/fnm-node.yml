@@ -1,0 +1,18 @@
+---
+- name: Install nodejs via fnm
+  shell:
+    cmd: |
+      set -o pipefail
+      eval "$(fnm env)"
+      fnm install {{ item }}
+    executable: /bin/bash
+  with_items: "{{ fnm_nodejs_versions }}"
+
+- name: Set default nodejs version via fnm
+  shell:
+    cmd: |
+      set -o pipefail
+      eval "$(fnm env)"
+      fnm use {{ fnm_default_nodejs_version }}
+      fnm default $(node --version)
+    executable: /bin/bash

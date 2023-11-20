@@ -58,26 +58,8 @@ homebrew_installed_packages:
   - git
   - go
 
-mas_installed_apps:
-  - { id: 443987910, name: "1Password" }
-  - { id: 498486288, name: "Quick Resizer" }
-  - { id: 557168941, name: "Tweetbot" }
-  - { id: 497799835, name: "Xcode" }
-
-composer_packages:
-  - name: hirak/prestissimo
-  - name: drush/drush
-    version: '^8.1'
-
-gem_packages:
-  - name: bundler
-    state: latest
-
 npm_packages:
   - name: webpack
-
-pip_packages:
-  - name: mkdocs
 
 configure_dock: true
 dockitems_remove:

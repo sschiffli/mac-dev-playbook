@@ -19,32 +19,132 @@
     - role: geerlingguy.dotfiles
       when: configure_dotfiles
       tags: ['dotfiles']
-    - role: geerlingguy.mac.mas
-      when: mas_installed_apps or mas_installed_app_ids
-      tags: ['mas']
     - role: geerlingguy.mac.dock
       when: configure_dock
       tags: ['dock']
+    - role: gantsign.visual-studio-code
+      users:
+        - username: sschiffli
+          visual_studio_code_extensions:
+            - Catppuccin.catppuccin-vsc
+            - Catppuccin.catppuccin-vsc-icons
+            - streetsidesoftware.code-spell-checker
+            - eamodio.gitlens
+            - vscodevim.vim
+            - esbenp.prettier-vscode
+            - rust-lang.rust-analyzer
+            - golang.Go
+            - bradlc.vscode-tailwindcss
 
+          visual_studio_code_settings_overwrite: true
+          visual_studio_code_settings: {
+            "editor.inlayHints.enabled": "off",
+            "terminal.integrated.enableMultiLinePasteWarning": false,
+            "editor.minimap.enabled": false,
+            "editor.formatOnSave": true,
+            "editor.inlineSuggest.enabled": true,
+            "editor.lineNumbers": "relative",
+            "editor.cursorSurroundingLines": 8,
+            "github.copilot.enable": {
+              "*": false,
+              "plaintext": false,
+              "markdown": true,
+              "scminput": false,
+              "yaml": true
+            },
+            "[typescriptreact]": {
+              "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[javascript]": {
+              "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[typescript]": {
+              "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[json]": {
+              "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "[jsonc]": {
+              "editor.defaultFormatter": "esbenp.prettier-vscode"
+            },
+            "editor.codeActionsOnSave": {
+              "source.addMissingImports": true
+            },
+            "workbench.startupEditor": "none",
+            "terminal.integrated.fontSize": 12,
+            "editor.fontFamily": "'JetBrainsMono Nerd Font'",
+            "editor.fontVariations": false,
+            "editor.fontSize": 12,
+            "git.confirmSync": false,
+            "explorer.confirmDelete": false,
+            "vim.leader": "<space>",
+            "vim.hlsearch": false,
+            "vim.incsearch": true,
+            "vim.useSystemClipboard": true,
+            "vim.highlightedyank.enable": true,
+            "cSpell.userWords": ["dumbass", "firestore", "Leaderboard", "matchups"],
+            "vim.visualModeKeyBindingsNonRecursive": [
+              {
+                "before": ["<leader>", "p"],
+                "after": ["\"", "_", "d", "P"]
+              }
+            ],
+            "vim.normalModeKeyBindingsNonRecursive": [
+              {
+                "before": ["<C-d>"],
+                "after": ["<C-d>", "z", "z"]
+              },
+              {
+                "before": ["<C-u>"],
+                "after": ["<C-u>", "z", "z"]
+              },
+              {
+                "before": ["n"],
+                "after": ["n", "z", "z", "z", "v"]
+              },
+              {
+                "before": ["N"],
+                "after": ["N", "z", "z", "z", "v"]
+              }
+            ],
+            "editor.stickyScroll.enabled": true,
+            "go.toolsManagement.autoUpdate": true,
+            "workbench.iconTheme": "catppuccin-latte",
+            "workbench.colorTheme": "Catppuccin Latte",
+            "git.openRepositoryInParentFolders": "always"
+          }
+          visual_studio_code_keybindings_overwrite: true
+          visual_studio_code_keybindings: [
+            {
+              "key":     "ctrl+'",
+              "command": "workbench.action.terminal.focus"
+            },
+            {
+              "key":     "ctrl+'",
+              "command": "workbench.action.focusActiveEditorGroup",
+              "when":    "terminalFocus"
+            },
+            {
+              "key": "ctrl+f",
+              "command": "workbench.action.openRecent"
+            },
+            {
+              "key": "ctrl+r",
+              "command": "-workbench.action.openRecent"
+            }
+          ]
+      tags: ['vscode']
   tasks:
-    - import_tasks: tasks/sudoers.yml
-      when: configure_sudoers
-      tags: ['sudoers']
-
-    - import_tasks: tasks/terminal.yml
-      when: configure_terminal
-      tags: ['terminal']
-
-    - import_tasks: tasks/osx.yml
-      when: configure_osx
-      tags: ['osx']
-
+    - import_tasks: tasks/git.yml
+      tags: ['git']
+    - import_tasks: tasks/rustup.yml
+      tags: ['rustup'] 
+    - import_tasks: tasks/zsh.yml
+      tags: ['zsh']
+    - import_tasks: tasks/fnm-node.yml
+      tags: ['fnm']
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-
-    - import_tasks: tasks/sublime-text.yml
-      when: configure_sublime
-      tags: ['sublime-text']
 
     - name: Run post-provision task files in a block.
       tags: ['post']

@@ -1,0 +1,11 @@
+- name: Check if rustup exists
+  stat:
+    path: ~/.rustup
+  register: rustup_stats
+  tags: &tags_for_rustup_tasks [ 'install', 'productivity', 'dotfiles', 'rustup' ]
+
+- name: Pull in rustup
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > ~/.rustup.sh && chmod +x ~/.rustup.sh && ~/.rustup.sh -y --no-modify-path -c rust-analyzer
+  tags: *tags_for_rustup_tasks
+  when: rustup_stats.stat.exists == False
+  become_user: sschiffli
