@@ -1,0 +1,105 @@
+- name: Set linear mouse
+  become_user: sschiffli
+  community.general.osx_defaults:
+    key: com.apple.mouse.linear
+    type: bool
+    value: true
+  tags:
+    - mac
+
+- name: Set mouse scaling
+  become_user: sschiffli
+  community.general.osx_defaults:
+    key: com.apple.mouse.scaling
+    type: float
+    value: 1.0
+  tags:
+    - mac
+
+- name: Fast initial key repeat
+  become_user: sschiffli
+  community.general.osx_defaults:
+    key: InitialKeyRepeat
+    type: float
+    value: 20
+  tags:
+    - mac
+
+- name: Fast key repeat
+  become_user: sschiffli
+  community.general.osx_defaults:
+    key: KeyRepeat
+    type: float
+    value: 2
+  tags:
+    - mac
+
+- name: Icon size in dock
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 30
+  tags:
+    - mac
+
+- name: Faster animations
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: expose-animation-duration
+    type: float
+    value: 0.15
+  tags:
+    - mac
+
+- name: Autohide dock
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  tags:
+    - mac
+
+- name: Don't show recents
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: false
+  tags:
+    - mac
+
+- name: Don't rearrange spaces automatically
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mru-spaces
+    type: bool
+    value: false
+  tags:
+    - mac
+
+- name: Disable all animations
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: DisableAllAnimations
+    type: bool
+    value: true
+  tags:
+    - mac
+
+- name: Disable press and hold in vscode so you can repeat keys in vim
+  become_user: sschiffli
+  community.general.osx_defaults:
+    domain: com.microsoft.VSCode
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
+  tags:
+    - mac

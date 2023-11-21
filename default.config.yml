@@ -14,7 +14,7 @@ dockitems_remove:
   - TV
   - Music
   - News
-  - 'App Store'
+  - "App Store"
   - Safari
 dockitems_persist:
   - name: "Firefox Developer Edition"
@@ -69,8 +69,6 @@ homebrew_installed_packages:
   - zsh-completions
 
 homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
   - homebrew/cask-versions
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -80,7 +78,8 @@ homebrew_cask_apps:
   - google-chrome
   - spotify
 
-npm_packages: []
+npm_packages:
+  []
   # - name: firebase-tools
   #   state: latest
 
