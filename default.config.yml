@@ -77,11 +77,15 @@ homebrew_cask_apps:
   - firefox-developer-edition
   - google-chrome
   - spotify
+  - postman
 
 npm_packages:
-  []
-  # - name: firebase-tools
-  #   state: latest
+  - name: firebase-tools
+    state: latest
+  - name: yarn
+    state: latest
+  - name: npm-check-updates
+    state: latest
 
 fnm_nodejs_versions:
   - "18"

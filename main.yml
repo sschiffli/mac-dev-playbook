@@ -37,11 +37,10 @@
       tags: ["tmux"]
     - import_tasks: tasks/zsh.yml
       tags: ["zsh"]
-    - import_tasks: tasks/extra-packages.yml
-      tags: ["extra-packages"]
     - import_tasks: tasks/fnm-node.yml
       tags: ["fnm"]
-
+    - import_tasks: tasks/extra-packages.yml
+      tags: ["extra-packages"]
     - name: Run post-provision task files in a block.
       tags: ["post"]
       block:
