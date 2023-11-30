@@ -1,3 +1,7 @@
+## Fix keyboard modifier keys
+
+swap command and control
+
 ## Copy Fonts to ~/Library/Fonts
 
 ## Setup yabai

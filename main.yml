@@ -27,8 +27,6 @@
   tasks:
     - import_tasks: tasks/mac.yml
       tags: ["mac"]
-    - import_tasks: tasks/git.yml
-      tags: ["git"]
     - import_tasks: tasks/rustup.yml
       tags: ["rustup"]
     - import_tasks: tasks/term.yml
