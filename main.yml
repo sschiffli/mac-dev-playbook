@@ -22,8 +22,6 @@
     - role: geerlingguy.mac.dock
       when: configure_dock
       tags: ["dock"]
-    - role: gantsign.visual-studio-code
-      tags: ["vscode"]
   tasks:
     - import_tasks: tasks/mac.yml
       tags: ["mac"]
