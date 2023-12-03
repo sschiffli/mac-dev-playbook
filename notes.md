@@ -27,3 +27,8 @@ gpg --edit-key <key id>
 trust
 5
 q
+
+## FZF extras
+To install useful keybindings and fuzzy completion:
+  /opt/homebrew/opt/fzf/install
+
